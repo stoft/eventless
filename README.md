@@ -16,7 +16,8 @@ Zero or more events may be associated with a single rule.
 
 An event consists of the following fields:
 
-|| Field | Description |
+| Field | Description |
+|---|---|
 | Id | A numeric ID in the backend. |
 | Type | A unique name for a certain type of events. |
 | LastSeen | When the event was last seen. |
@@ -24,7 +25,8 @@ An event consists of the following fields:
 
 A rule consists of the following fields:
 
-|| Field | Description |
+| Field | Description |
+|---|---|
 | Id | A numeric ID in the backend |
 | Description | A description of the rule |
 | Expiration | How long an associated event should be kept before it is considered expired |
