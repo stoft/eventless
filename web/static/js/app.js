@@ -20,4 +20,4 @@ import "deps/phoenix_html/web/static/js/phoenix_html"
 
 // import socket from "./socket"
 var elmDiv = document.getElementById('elm-app-lives-here');
-var elmApp = Elm.embed(Elm.Eventless, elmDiv);
+var elmApp = Elm.Eventless.embed(elmDiv);

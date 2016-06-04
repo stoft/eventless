@@ -16,7 +16,7 @@
     <div class="container" role="main">
 
 
-      <div id="elm-app-lives-here" name="elm-app-lives-here">Elm app</div>
+      <div id="elm-app-lives-here" name="elm-app-lives-here"></div>
       <%= @inner %>
 
     </div> <!-- /container -->
