@@ -60,6 +60,6 @@ The update function consists of no less than 20 different possible actions. I wo
 
 The view composes several different granular parts that are responsible for displaying the various artifacts.
 
-Being new to Elm the most difficult part of the Frontend was writing the custom HTTP calls using `Http.send` since the standard library only provides `Http.get`, `Http.post` out of the box, and `Http.post` does not set the `Content-Type` header that Phoenix expects. I decided to adapt Elm rather than Phoenix since I had to build a custom calls for PUT and DELETE anyways.
+Being new to Elm the most difficult part of the Frontend was writing the custom HTTP calls using `Http.send` since the standard library only provides `Http.get`, `Http.post` out of the box, and `Http.post` does not set the `Content-Type` header that Phoenix expects. I decided to adapt Elm rather than Phoenix since I had to build custom calls for PUT and DELETE anyways.
 
 When I started on the frontend I built most of it without calling the backend, simply updating the model, and then once it was complete I started converting the operations to calling the backend. I did this to gain familiarity with Elm one thing at a time instead of confronting many different concepts at once. This may be one of the reasons there was an inflation of actions in the `update` function.
