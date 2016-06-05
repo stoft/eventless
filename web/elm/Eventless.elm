@@ -1,4 +1,4 @@
-port module Eventless exposing (..)
+module Eventless exposing (..)
 
 import Html exposing (..)
 import Html.App as App
@@ -136,6 +136,12 @@ update action model =
                     List.filter (\r -> r.id == id) model.rules
                         |> List.head
 
+                selectedRule =
+                    if (Maybe.withDefault id model.selectedRuleID) == id then
+                        Nothing
+                    else
+                        model.selectedRuleID
+
                 transformEvent id event =
                     if event.rule_id == Just id then
                         { event | rule_id = Nothing }
@@ -144,14 +150,21 @@ update action model =
 
                 transformEvents =
                     List.map (transformEvent id) model.events
+
+                updateEvents events =
+                    List.map updateEvent events
             in
                 case ruleToDelete of
                     Nothing ->
                         ( model, Cmd.none )
 
                     Just rule ->
-                        ( { model | rules = remainingRules, events = transformEvents }
-                        , deleteRule rule
+                        ( { model
+                            | rules = remainingRules
+                            , events = transformEvents
+                            , selectedRuleID = selectedRule
+                          }
+                        , Cmd.batch ((deleteRule rule) :: (updateEvents transformEvents))
                         )
 
         EditRule id ->
@@ -780,15 +793,6 @@ maybeInt decoder =
         [ Json.null Nothing
         , Json.map Just decoder
         ]
-
-
-
--- PORTS
--- port tasks : Signal (Task.Task Never ())
--- port tasks :
--- port tasks =
---     app.tasks
--- WIRE THE APP TOGETHER!
 
 
 main : Program Never
